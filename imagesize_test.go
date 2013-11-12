@@ -40,3 +40,21 @@ func TestCalculateGifImageSize(t *testing.T) {
     t.Errorf("Expected %v, got %v", height, size.Height)
   }
 }
+
+func TestCalculateJpegImageSize(t *testing.T) {
+  img, _ := ioutil.ReadFile("fixtures/gopher.jpeg")
+
+  const imageType = "jpeg"
+  const width     = 612
+  const height    = 612
+
+  size, _ := GetSize(img, imageType)
+
+  if size.Width != width {
+    t.Errorf("Expected %v, got %v", width, size.Width)
+  }
+
+  if size.Height != height {
+    t.Errorf("Expected %v, got %v", height, size.Height)
+  }
+}
